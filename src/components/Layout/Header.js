@@ -1,7 +1,7 @@
-import React from "react";
+import React, { Fragment } from "react";
 import style from "./Header.module.css";
 
-const Header = () => {
+const Header = ({ loggedIn, setIsLoggedIn }) => {
   return (
     <header className={style.header}>
       <div className={style.logo}>
@@ -11,9 +11,15 @@ const Header = () => {
         </h1>
       </div>
       <nav className={style.navigation}>
-        <span>Login</span>
-        <span>|</span>
-        <span>Register</span>
+        {loggedIn ? (
+          <span onClick={() => setIsLoggedIn(false)}>Logout</span>
+        ) : (
+          <Fragment>
+            <span onClick={() => setIsLoggedIn(true)}>Login</span>
+            <span>|</span>
+            <span>Register</span>
+          </Fragment>
+        )}
       </nav>
     </header>
   );

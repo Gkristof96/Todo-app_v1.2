@@ -15,7 +15,7 @@ body {
 section {
   width: 100%;
   height: calc(100vh - 80px);
-  padding: 0 calc((100vw - 1400px) / 2);
+  padding: 150px calc((100vw - 1400px) / 2);
   display: grid;
   grid-template-columns: 1fr 1fr;
 }

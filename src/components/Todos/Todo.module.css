@@ -1,0 +1,36 @@
+.todo {
+  width: 99%;
+  border-radius: 10px;
+  background-color: #eaf6f6;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.7rem;
+  transition: 0.3s ease-in-out;
+  margin: 0.5rem 0;
+  padding: 10px;
+}
+
+.title {
+  color: #212121;
+  font-size: 14px;
+}
+
+.subheader {
+  color: #bdbdbd;
+  font-family: "Poppins";
+  font-size: 10px;
+}
+
+.btns {
+  display: flex;
+  transition: 0.5s ease-in-out;
+}
+
+.action-btn {
+  width: 20px;
+  height: auto;
+  margin: 0 0.2rem;
+  color: #66bfbf;
+  cursor: pointer;
+}

@@ -9,7 +9,7 @@ const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   return (
     <div className='App'>
-      <Header />
+      <Header loggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
       <section>
         <div className='content-wrapper'>
           {isLoggedIn ? <TodoManager /> : <HeroText />}
