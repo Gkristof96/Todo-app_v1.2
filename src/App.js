@@ -1,24 +1,21 @@
-import { useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
+import SignIn from "./components/Auth/SignIn";
 import HeroText from "./components/HeroText";
-import Header from "./components/Layout/Header";
-import SVG from "./components/SVG";
+import Layout from "./components/Layout/Layout";
 import TodoManager from "./components/TodoManager";
 
 const App = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   return (
-    <div className='App'>
-      <Header loggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
-      <section>
-        <div className='content-wrapper'>
-          {isLoggedIn ? <TodoManager /> : <HeroText />}
-        </div>
-        <div className='svg-wrapper'>
-          <SVG />
-        </div>
-      </section>
-    </div>
+    <BrowserRouter>
+      <Layout>
+        <Routes>
+          <Route path='/*' element={<HeroText />} />
+          <Route path='/todos' element={<TodoManager />} />
+          <Route path='/signin' element={<SignIn />} />
+        </Routes>
+      </Layout>
+    </BrowserRouter>
   );
 };
 

@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import { Link } from "react-router-dom";
 import style from "./Header.module.css";
 
 const Header = ({ loggedIn, setIsLoggedIn }) => {
@@ -15,9 +16,9 @@ const Header = ({ loggedIn, setIsLoggedIn }) => {
           <span onClick={() => setIsLoggedIn(false)}>Logout</span>
         ) : (
           <Fragment>
-            <span onClick={() => setIsLoggedIn(true)}>Login</span>
+            <Link to='/signin'>Login</Link>
             <span>|</span>
-            <span>Register</span>
+            <Link to='/signup'>Register</Link>
           </Fragment>
         )}
       </nav>

@@ -1,4 +1,3 @@
-import { Button } from "@mui/material";
 import { Fragment } from "react";
 import style from "./HeroText.module.css";
 
@@ -14,12 +13,6 @@ const HeroText = () => {
           do is register to our app, and you can start write down your tasks.
           Are you interests?{" "}
         </p>
-        <Button
-          variant='outlined'
-          sx={{ width: "200px", mt: "25px", color: "#66BFBF" }}
-        >
-          Start Now
-        </Button>
       </div>
     </Fragment>
   );
