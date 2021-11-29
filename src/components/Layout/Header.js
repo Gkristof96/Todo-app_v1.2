@@ -1,10 +1,13 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useContext } from "react";
 import { Link } from "react-router-dom";
 import style from "./Header.module.css";
 import { useNavigate } from "react-router";
+import AuthContext from "../../store/auth-context";
 
-const Header = ({ loggedIn, setIsLoggedIn }) => {
+const Header = () => {
   const navigate = useNavigate();
+
+  const authCtx = useContext(AuthContext);
   const homeHandler = () => {
     navigate("/");
   };
@@ -17,8 +20,8 @@ const Header = ({ loggedIn, setIsLoggedIn }) => {
         </h1>
       </div>
       <nav className={style.navigation}>
-        {loggedIn ? (
-          <span onClick={() => setIsLoggedIn(false)}>Logout</span>
+        {authCtx.isLoggedIn ? (
+          <span onClick={authCtx.logout}>Logout</span>
         ) : (
           <Fragment>
             <Link to='/signin'>Login</Link>

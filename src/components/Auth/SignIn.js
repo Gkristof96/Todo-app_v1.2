@@ -1,8 +1,6 @@
 import React, { useContext, useState } from "react";
 import style from "./Sign.module.css";
 import Button from "../UI/Button";
-import { auth } from "../../firebase";
-import { signInWithEmailAndPassword } from "firebase/auth";
 import AuthContext from "../../store/auth-context";
 
 const SignIn = () => {
@@ -13,19 +11,13 @@ const SignIn = () => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    signInWithEmailAndPassword(auth, email, password)
-      .then((cred) => {
-        authCtx.login(cred._tokenResponse.idToken);
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
+    authCtx.login({ email, password });
   };
 
   console.log(authCtx.isLoggedIn);
   return (
     <div className={style.card}>
-      <h1>Sign Up</h1>
+      <h1>Sign In</h1>
       <form className={style.form} onSubmit={submitHandler}>
         <input
           type='email'

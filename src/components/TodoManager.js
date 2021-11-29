@@ -1,15 +1,12 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import style from "./TodoManager.module.css";
 import Todo from "./Todos/Todo";
 import { firestore } from "../firebase";
 import { collection, getDocs, addDoc } from "firebase/firestore";
-import AuthContext from "../store/auth-context";
 
 const TodoManager = () => {
   const [todoInput, setTodoInput] = useState("");
   const [todos, setTodos] = useState([]);
-
-  const authCtx = useContext(AuthContext);
 
   const todosref = collection(firestore, "todos");
 

@@ -1,5 +1,4 @@
 import { Fragment } from "react";
-import { Navigate } from "react-router";
 import style from "./HeroText.module.css";
 import Button from "./UI/Button";
 import { useNavigate } from "react-router";
