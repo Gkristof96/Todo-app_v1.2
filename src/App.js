@@ -1,12 +1,11 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useContext } from "react/cjs/react.development";
 import "./App.css";
-import SignIn from "./components/Auth/SignIn";
-import SignUp from "./components/Auth/SignUp";
-import HeroText from "./components/HeroText";
+import HomePage from "./pages/HomePage";
 import Layout from "./components/Layout/Layout";
-import TodoManager from "./components/TodoManager";
+import TodoManager from "./components/Todos/TodoManager";
 import AuthContext from "./store/auth-context";
+import AuthPage from "./pages/AuthPage";
 
 const App = () => {
   const authCtx = useContext(AuthContext);
@@ -14,18 +13,16 @@ const App = () => {
     <BrowserRouter>
       <Layout>
         <Routes>
-          <Route path='/*' element={<HeroText />} />
+          <Route path='/*' element={<HomePage />} />
           <Route
             path='/todos'
             element={authCtx.isLoggedIn ? <TodoManager /> : <Navigate to='/' />}
           ></Route>
           <Route
-            path='/signin'
-            element={authCtx.isLoggedIn ? <Navigate to='/todos' /> : <SignIn />}
-          />
-          <Route
-            path='/signup'
-            element={authCtx.isLoggedIn ? <Navigate to='/todos' /> : <SignUp />}
+            path='/auth*'
+            element={
+              authCtx.isLoggedIn ? <Navigate to='/todos' /> : <AuthPage />
+            }
           />
         </Routes>
       </Layout>

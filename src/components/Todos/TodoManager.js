@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import style from "./TodoManager.module.css";
-import Todo from "./Todos/Todo";
-import { firestore } from "../firebase";
+import Todo from "./Todo";
+import { firestore } from "../../firebase";
 import { collection, getDocs, addDoc } from "firebase/firestore";
 
 const TodoManager = () => {
@@ -10,13 +10,16 @@ const TodoManager = () => {
 
   const todosref = collection(firestore, "todos");
 
-  getDocs(todosref).then((snapshot) => {
-    let books = [];
-    snapshot.docs.forEach((doc) => {
-      books.push({ ...doc.data(), id: doc.id });
+  useEffect(() => {
+    getDocs(todosref).then((snapshot) => {
+      let books = [];
+      snapshot.docs.forEach((doc) => {
+        books.push({ ...doc.data(), id: doc.id });
+      });
+      console.log(books);
+      setTodos(books);
     });
-    console.log(books);
-  });
+  }, []);
 
   const addNewTodo = () => {
     if (todoInput.length > 0) {
@@ -46,7 +49,7 @@ const TodoManager = () => {
           <Todo
             key={todo.id}
             id={todo.id}
-            title={todo.title}
+            title={todo.todo}
             isTodoChecked={todo.checked}
             todos={todos}
             todo={todo}

@@ -1,14 +1,12 @@
 import { Fragment } from "react";
-import style from "./HeroText.module.css";
-import Button from "./UI/Button";
+import style from "./HomePage.module.css";
+import Button from "../components/UI/Button";
 import { useNavigate } from "react-router";
 
-const HeroText = () => {
+const HomePage = () => {
   const navigate = useNavigate();
   const toTodos = () => {
-    console.log("mivan öcsém");
     navigate("/todos");
-    console.log("nem értem");
   };
   return (
     <Fragment>
@@ -27,4 +25,4 @@ const HeroText = () => {
   );
 };
 
-export default HeroText;
+export default HomePage;

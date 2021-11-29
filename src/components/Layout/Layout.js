@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import Header from "./Header";
-import SVG from "../SVG";
+import SVG from "./SVG";
 
 const Layout = ({ children }) => {
   return (

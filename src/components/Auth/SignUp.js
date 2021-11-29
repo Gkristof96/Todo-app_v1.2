@@ -27,30 +27,27 @@ const SignUp = () => {
     }
   };
   return (
-    <div className={style.card}>
-      <h1>Sign Up</h1>
-      <form className={style.form} onSubmit={submitHandler}>
-        <input
-          type='email'
-          name='email'
-          value={email}
-          onChange={(event) => setEmail(event.target.value)}
-        />
-        <input
-          type='password'
-          name='password'
-          value={password}
-          onChange={(event) => setPassword(event.target.value)}
-        />
-        <input
-          type='password'
-          name='cpassword'
-          value={cpassword}
-          onChange={(event) => setCPassword(event.target.value)}
-        />
-        <Button type='submit'>Sign Up</Button>
-      </form>
-    </div>
+    <form className={style.form} onSubmit={submitHandler}>
+      <input
+        type='email'
+        name='email'
+        value={email}
+        onChange={(event) => setEmail(event.target.value)}
+      />
+      <input
+        type='password'
+        name='password'
+        value={password}
+        onChange={(event) => setPassword(event.target.value)}
+      />
+      <input
+        type='password'
+        name='cpassword'
+        value={cpassword}
+        onChange={(event) => setCPassword(event.target.value)}
+      />
+      <Button type='submit'>Sign Up</Button>
+    </form>
   );
 };
 

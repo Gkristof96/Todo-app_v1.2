@@ -24,9 +24,9 @@ const Header = () => {
           <span onClick={authCtx.logout}>Logout</span>
         ) : (
           <Fragment>
-            <Link to='/signin'>Login</Link>
+            <Link to='/auth/login'>Login</Link>
             <span>|</span>
-            <Link to='/signup'>Register</Link>
+            <Link to='/auth/signup'>Sign Up</Link>
           </Fragment>
         )}
       </nav>
