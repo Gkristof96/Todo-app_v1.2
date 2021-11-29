@@ -1,5 +1,6 @@
 import { Fragment } from "react";
 import style from "./HeroText.module.css";
+import Button from "./UI/Button";
 
 const HeroText = () => {
   return (
@@ -13,6 +14,7 @@ const HeroText = () => {
           do is register to our app, and you can start write down your tasks.
           Are you interests?{" "}
         </p>
+        <Button>Start Now</Button>
       </div>
     </Fragment>
   );

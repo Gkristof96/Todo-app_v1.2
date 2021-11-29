@@ -1,0 +1,27 @@
+.btn {
+  border: none;
+  font-size: 1.4rem;
+  height: 50px;
+  width: 100%;
+  max-width: 200px;
+  margin: 25px 0;
+  border-radius: 10px;
+  border: 2px solid #66bfbf;
+  background: transparent;
+  color: #66bfbf;
+  outline: none;
+  transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: #66bfbf;
+  color: #eeeeee;
+  transform: scale(1.1);
+}
+.btn:disabled {
+  background: gray;
+}
+.btn:disabled:hover {
+  transform: none;
+}

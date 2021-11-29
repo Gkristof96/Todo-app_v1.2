@@ -1,20 +1,39 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import style from "./TodoManager.module.css";
 import Todo from "./Todos/Todo";
+import { firestore } from "../firebase";
+import { collection, getDocs, addDoc } from "firebase/firestore";
+import { useNavigate } from "react-router";
 
 const TodoManager = () => {
   const [todoInput, setTodoInput] = useState("");
   const [todos, setTodos] = useState([]);
+  const navigate = useNavigate();
+
+  const todosref = collection(firestore, "todos");
+
+  useEffect(() => {
+    navigate("/");
+  });
+
+  getDocs(todosref).then((snapshot) => {
+    let books = [];
+    snapshot.docs.forEach((doc) => {
+      books.push({ ...doc.data(), id: doc.id });
+    });
+    console.log(books);
+  });
 
   const addNewTodo = () => {
     if (todoInput.length > 0) {
-      setTodos([
-        ...todos,
-        { title: todoInput, checked: false, id: Date.now() },
-      ]);
-      setTodoInput("");
+      addDoc(todosref, {
+        todo: todoInput,
+      }).then(() => {
+        setTodoInput("");
+      });
     }
   };
+
   return (
     <div className={style.card}>
       <h1 className={style.title}>Todos</h1>
