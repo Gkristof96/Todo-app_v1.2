@@ -1,8 +1,16 @@
 import { Fragment } from "react";
+import { Navigate } from "react-router";
 import style from "./HeroText.module.css";
 import Button from "./UI/Button";
+import { useNavigate } from "react-router";
 
 const HeroText = () => {
+  const navigate = useNavigate();
+  const toTodos = () => {
+    console.log("mivan öcsém");
+    navigate("/todos");
+    console.log("nem értem");
+  };
   return (
     <Fragment>
       <div className={style.wrapper}>
@@ -14,7 +22,7 @@ const HeroText = () => {
           do is register to our app, and you can start write down your tasks.
           Are you interests?{" "}
         </p>
-        <Button>Start Now</Button>
+        <Button onClick={toTodos}>Start Now</Button>
       </div>
     </Fragment>
   );

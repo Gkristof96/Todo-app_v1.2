@@ -1,11 +1,16 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import style from "./Header.module.css";
+import { useNavigate } from "react-router";
 
 const Header = ({ loggedIn, setIsLoggedIn }) => {
+  const navigate = useNavigate();
+  const homeHandler = () => {
+    navigate("/");
+  };
   return (
     <header className={style.header}>
-      <div className={style.logo}>
+      <div className={style.logo} onClick={homeHandler}>
         <img src='todo.png' alt='todo logo' />
         <h1>
           <span>Todo</span> App

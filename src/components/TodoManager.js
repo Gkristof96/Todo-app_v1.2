@@ -1,20 +1,17 @@
-import { useEffect, useState } from "react";
+import { useState, useContext } from "react";
 import style from "./TodoManager.module.css";
 import Todo from "./Todos/Todo";
 import { firestore } from "../firebase";
 import { collection, getDocs, addDoc } from "firebase/firestore";
-import { useNavigate } from "react-router";
+import AuthContext from "../store/auth-context";
 
 const TodoManager = () => {
   const [todoInput, setTodoInput] = useState("");
   const [todos, setTodos] = useState([]);
-  const navigate = useNavigate();
+
+  const authCtx = useContext(AuthContext);
 
   const todosref = collection(firestore, "todos");
-
-  useEffect(() => {
-    navigate("/");
-  });
 
   getDocs(todosref).then((snapshot) => {
     let books = [];
