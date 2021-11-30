@@ -1,0 +1,10 @@
+.message {
+  width: 80%;
+  font-family: "Poppins";
+  border-radius: 5px;
+  margin-top: 5px;
+  text-align: center;
+  padding: 5px 0;
+  color: #ff3333;
+  background: #ffcccc;
+}

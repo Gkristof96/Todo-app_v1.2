@@ -8,10 +8,12 @@ import {
   serverTimestamp,
 } from "firebase/firestore";
 import Todo from "./Todo";
+import ErrorMessage from "../UI/ErrorMessage";
 
 const TodoManager = () => {
   const [todoInput, setTodoInput] = useState("");
   const [todos, setTodos] = useState([]);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const todosref = collection(firestore, "todos");
 
@@ -28,6 +30,7 @@ const TodoManager = () => {
 
   const addNewTodo = () => {
     if (todoInput.length > 0) {
+      setErrorMessage("");
       addDoc(todosref, {
         todo: todoInput,
         checked: false,
@@ -35,6 +38,8 @@ const TodoManager = () => {
       }).then(() => {
         setTodoInput("");
       });
+    } else {
+      setErrorMessage("Please fill the todo field!");
     }
   };
 
@@ -50,6 +55,7 @@ const TodoManager = () => {
         />
         <button onClick={() => addNewTodo()}>Add</button>
       </div>
+      {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
       {todos.length > 0 && <div className={style["horizontal-line"]}></div>}
       <div className={style["todos-list"]}>
         {todos.map((todo) => (

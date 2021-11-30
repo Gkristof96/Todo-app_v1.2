@@ -45,3 +45,9 @@
   color: #66bfbf;
   transform: scale(1.1);
 }
+
+@media screen and (max-width: 1450px) {
+  .header {
+    padding: 0 25px;
+  }
+}
