@@ -1,15 +1,10 @@
-import { useState, useContext } from "react";
 import { Routes, Route, Navigate } from "react-router";
 import SignUp from "../components/Auth/SignUp";
 import Login from "../components/Auth/Login";
 import style from "./AuthPage.module.css";
 
 const AuthPage = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [cPassword, setCPassword] = useState("");
-
-  const [isLoginActive, setIsLoginActive] = useState(true);
+  const isLoginActive = true;
   return (
     <div className={style.card}>
       {isLoginActive && <h1>Login</h1>}

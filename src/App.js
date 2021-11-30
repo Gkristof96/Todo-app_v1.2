@@ -19,7 +19,7 @@ const App = () => {
             element={authCtx.isLoggedIn ? <TodoManager /> : <Navigate to='/' />}
           ></Route>
           <Route
-            path='/auth*'
+            path='/auth/*'
             element={
               authCtx.isLoggedIn ? <Navigate to='/todos' /> : <AuthPage />
             }

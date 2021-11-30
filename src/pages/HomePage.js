@@ -1,12 +1,14 @@
-import { Fragment } from "react";
+import { Fragment, useContext } from "react";
 import style from "./HomePage.module.css";
 import Button from "../components/UI/Button";
 import { useNavigate } from "react-router";
+import AuthContext from "../store/auth-context";
 
 const HomePage = () => {
+  const authCtx = useContext(AuthContext);
   const navigate = useNavigate();
-  const toTodos = () => {
-    navigate("/todos");
+  const startHandler = () => {
+    authCtx.isLoggedIn ? navigate("/todos") : navigate("/auth/login");
   };
   return (
     <Fragment>
@@ -19,7 +21,7 @@ const HomePage = () => {
           do is register to our app, and you can start write down your tasks.
           Are you interests?{" "}
         </p>
-        <Button onClick={toTodos}>Start Now</Button>
+        <Button onClick={startHandler}>Start Now</Button>
       </div>
     </Fragment>
   );

@@ -6,7 +6,6 @@ import AuthContext from "../../store/auth-context";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
   const authCtx = useContext(AuthContext);
 
   const submitHandler = (event) => {

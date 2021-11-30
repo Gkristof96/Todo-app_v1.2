@@ -1,31 +1,42 @@
 import { ImCheckboxChecked, ImCheckboxUnchecked, ImBin } from "react-icons/im";
 import style from "./Todo.module.css";
+import { firestore } from "../../firebase";
+import { deleteDoc, doc, updateDoc } from "firebase/firestore";
 
-const Todo = ({ title, isTodoChecked, id, todos, setTodos }) => {
+const Todo = ({ title, checked, id }) => {
+  const docref = doc(firestore, "todos", id);
+
   const handleCheckTodo = () => {
-    setTodos(
-      todos.map((item) => {
-        if (item.id === id) {
-          return { ...item, checked: !item.checked };
-        }
-        return item;
+    updateDoc(docref, {
+      checked: !checked,
+    })
+      .then(() => {
+        console.log("checked changed");
       })
-    );
+      .catch((err) => {
+        console.log(err.message);
+      });
   };
   const removeTodo = () => {
-    setTodos(todos.filter((el) => el.id !== id));
+    console.log("delete");
+    deleteDoc(docref)
+      .then(() => {
+        console.log("deleted");
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
   };
   return (
     <div className={style.todo}>
       <div className={style.content}>
         <h2 className={style.title}>{title}</h2>
-        <h3 className={style.subheader}>{id}</h3>
       </div>
       <div className={style.btns}>
-        {isTodoChecked && (
+        {checked && (
           <ImBin className={style["action-btn"]} onClick={() => removeTodo()} />
         )}
-        {isTodoChecked ? (
+        {checked ? (
           <ImCheckboxChecked
             className={style["action-btn"]}
             onClick={() => handleCheckTodo()}
