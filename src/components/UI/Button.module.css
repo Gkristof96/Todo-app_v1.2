@@ -16,7 +16,7 @@
 
 .btn:hover {
   background: #66bfbf;
-  color: #eeeeee;
+  color: #fff;
   transform: scale(1.1);
 }
 .btn:disabled {

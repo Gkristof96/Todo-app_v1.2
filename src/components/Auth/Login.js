@@ -1,7 +1,9 @@
 import React, { useContext, useState } from "react";
+import { Link } from "react-router-dom";
 import style from "./Sign.module.css";
 import Button from "../UI/Button";
 import AuthContext from "../../store/auth-context";
+import Input from "../UI/Input";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -14,18 +16,23 @@ const Login = () => {
   };
   return (
     <form className={style.form} onSubmit={submitHandler}>
-      <input
+      <Input
         type='email'
         name='email'
         value={email}
-        onChange={(event) => setEmail(event.target.value)}
+        setValue={setEmail}
+        placeholder='Email'
       />
-      <input
+      <Input
         type='password'
         name='password'
         value={password}
-        onChange={(event) => setPassword(event.target.value)}
+        setValue={setPassword}
+        placeholder='Password'
       />
+      <Link className={style.link} to='/auth/signup'>
+        Don't have an account?
+      </Link>
       <Button type='submit'>Sign In</Button>
     </form>
   );
