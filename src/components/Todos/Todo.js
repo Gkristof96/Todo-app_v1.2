@@ -11,19 +11,14 @@ const Todo = ({ title, checked, id }) => {
     updateDoc(docref, {
       checked: !checked,
     })
-      .then(() => {
-        console.log("checked changed");
-      })
+      .then(() => {})
       .catch((err) => {
         console.log(err.message);
       });
   };
   const removeTodo = () => {
-    console.log("delete");
     deleteDoc(docref)
-      .then(() => {
-        console.log("deleted");
-      })
+      .then(() => {})
       .catch((err) => {
         console.log(err.message);
       });

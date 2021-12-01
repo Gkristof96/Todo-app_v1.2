@@ -4,6 +4,8 @@ import style from "./Sign.module.css";
 import Button from "../UI/Button";
 import AuthContext from "../../store/auth-context";
 import Input from "../UI/Input";
+import { auth } from "../../firebase";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -12,8 +14,15 @@ const Login = () => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    authCtx.login({ email, password });
+    signInWithEmailAndPassword(auth, email, password)
+      .then((cred) => {
+        authCtx.login(cred._tokenResponse.idToken);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
   };
+
   return (
     <form className={style.form} onSubmit={submitHandler}>
       <Input

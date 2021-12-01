@@ -3,11 +3,24 @@ import { Link } from "react-router-dom";
 import style from "./Header.module.css";
 import { useNavigate } from "react-router";
 import AuthContext from "../../store/auth-context";
+import { signOut } from "firebase/auth";
+import { auth } from "../../firebase";
 
 const Header = () => {
   const navigate = useNavigate();
 
   const authCtx = useContext(AuthContext);
+
+  const logoutHandler = () => {
+    signOut(auth)
+      .then(() => {
+        authCtx.logout();
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  };
+
   const homeHandler = () => {
     navigate("/");
   };
@@ -21,7 +34,7 @@ const Header = () => {
       </div>
       <nav className={style.navigation}>
         {authCtx.isLoggedIn ? (
-          <span onClick={authCtx.logout}>Logout</span>
+          <span onClick={logoutHandler}>Logout</span>
         ) : (
           <Fragment>
             <Link to='/auth/login'>Login</Link>

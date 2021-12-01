@@ -19,8 +19,21 @@ const TodoManager = () => {
 
   const todosref = collection(firestore, `users/${auth.currentUser.uid}/todos`);
 
-  useEffect(() => {
+  /*useEffect(() => {
     getDocs(todosref).then((snapshot) => {
+      let books = [];
+      snapshot.docs.forEach((doc) => {
+        books.push({ ...doc.data(), id: doc.id });
+      });
+      console.log(books);
+      setTodos(books);
+    });
+
+    // eslint-disable-next-line
+  }, []);*/
+
+  useEffect(() => {
+    onSnapshot(todosref, (snapshot) => {
       let books = [];
       snapshot.docs.forEach((doc) => {
         books.push({ ...doc.data(), id: doc.id });
@@ -44,7 +57,6 @@ const TodoManager = () => {
       setErrorMessage("Please fill the todo field!");
     }
   };
-
   return (
     <div className={style.card}>
       <h1 className={style.title}>Todos</h1>
