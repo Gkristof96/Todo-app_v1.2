@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { onAuthStateChanged } from "@firebase/auth";
+import { auth } from "../firebase";
 
 const AuthContext = React.createContext({
   token: "",
@@ -12,11 +14,19 @@ export const AuthContextProvider = (props) => {
 
   const userIsLoggedIn = !!token;
 
+  const unsubAuth = onAuthStateChanged(auth, (user) => {
+    if (user) {
+      setToken(user.accessToken);
+    }
+  });
+
   const loginHandler = (token) => {
+    console.log(token);
     setToken(token);
   };
 
   const logoutHandler = () => {
+    unsubAuth();
     setToken(null);
   };
 

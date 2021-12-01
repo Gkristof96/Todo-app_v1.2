@@ -3,7 +3,6 @@ import style from "./TodoManager.module.css";
 import { firestore } from "../../firebase";
 import {
   collection,
-  getDocs,
   addDoc,
   serverTimestamp,
   onSnapshot,
@@ -38,9 +37,10 @@ const TodoManager = () => {
       snapshot.docs.forEach((doc) => {
         books.push({ ...doc.data(), id: doc.id });
       });
-      console.log(books);
       setTodos(books);
     });
+
+    // eslint-disable-next-line
   }, []);
 
   const addNewTodo = () => {

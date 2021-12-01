@@ -9,6 +9,7 @@ import AuthPage from "./pages/AuthPage";
 
 const App = () => {
   const authCtx = useContext(AuthContext);
+
   return (
     <BrowserRouter>
       <Layout>
