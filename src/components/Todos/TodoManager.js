@@ -6,16 +6,18 @@ import {
   getDocs,
   addDoc,
   serverTimestamp,
+  onSnapshot,
 } from "firebase/firestore";
 import Todo from "./Todo";
 import ErrorMessage from "../UI/ErrorMessage";
+import { auth } from "../../firebase";
 
 const TodoManager = () => {
   const [todoInput, setTodoInput] = useState("");
   const [todos, setTodos] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
 
-  const todosref = collection(firestore, "todos");
+  const todosref = collection(firestore, `users/${auth.currentUser.uid}/todos`);
 
   useEffect(() => {
     getDocs(todosref).then((snapshot) => {
@@ -23,9 +25,9 @@ const TodoManager = () => {
       snapshot.docs.forEach((doc) => {
         books.push({ ...doc.data(), id: doc.id });
       });
+      console.log(books);
       setTodos(books);
     });
-    // eslint-disable-next-line
   }, []);
 
   const addNewTodo = () => {

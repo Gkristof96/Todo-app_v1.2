@@ -2,9 +2,10 @@ import { ImCheckboxChecked, ImCheckboxUnchecked, ImBin } from "react-icons/im";
 import style from "./Todo.module.css";
 import { firestore } from "../../firebase";
 import { deleteDoc, doc, updateDoc } from "firebase/firestore";
+import { auth } from "../../firebase";
 
 const Todo = ({ title, checked, id }) => {
-  const docref = doc(firestore, "todos", id);
+  const docref = doc(firestore, `users/${auth.currentUser.uid}/todos`, id);
 
   const handleCheckTodo = () => {
     updateDoc(docref, {
