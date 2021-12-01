@@ -32,14 +32,11 @@ const TodoManager = () => {
   }, []);*/
 
   useEffect(() => {
+    console.log("useEffect");
     onSnapshot(todosref, (snapshot) => {
-      let books = [];
-      snapshot.docs.forEach((doc) => {
-        books.push({ ...doc.data(), id: doc.id });
-      });
-      setTodos(books);
+      setTodos(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     });
-
+    console.log(todos);
     // eslint-disable-next-line
   }, []);
 

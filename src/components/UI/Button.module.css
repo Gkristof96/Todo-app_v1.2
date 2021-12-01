@@ -25,3 +25,11 @@
 .btn:disabled:hover {
   transform: none;
 }
+
+@media screen and (max-width: 768px) {
+  .btn {
+    height: 40px;
+    width: 80%;
+    margin: 10px 0;
+  }
+}

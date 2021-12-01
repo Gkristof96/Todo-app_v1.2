@@ -32,7 +32,9 @@
   max-width: 500px;
 }
 
-.navigation span {
+.navigation span,
+.navigation a {
+  text-decoration: none;
   margin: 0 5px;
   color: #646464;
   font-size: 1.2rem;
@@ -48,6 +50,24 @@
 
 @media screen and (max-width: 1450px) {
   .header {
-    padding: 0 25px;
+    height: 50px;
+    padding: 0 15px;
+  }
+
+  .navigation {
+    height: 50px;
+  }
+
+  .logo img {
+    height: 30px;
+  }
+
+  .logo h1 {
+    font-size: 1.2rem;
+  }
+
+  .navigation a,
+  .navigation span {
+    font-size: 0.8rem;
   }
 }

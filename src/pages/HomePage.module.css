@@ -2,6 +2,7 @@
   display: flex;
   width: 80%;
   flex-direction: column;
+  justify-content: center;
 }
 
 .title {
@@ -20,4 +21,21 @@
   font-size: 24px;
 
   color: #646464;
+}
+
+@media screen and (max-width: 768px) {
+  .wrapper {
+    width: 100%;
+    align-items: center;
+  }
+
+  .title {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+    text-align: center;
+  }
 }
