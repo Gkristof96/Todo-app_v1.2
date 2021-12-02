@@ -21,7 +21,9 @@ const HomePage = () => {
           do is register to our app, and you can start write down your tasks.
           Are you interests?{" "}
         </p>
-        <Button onClick={startHandler}>Start Now</Button>
+        <Button size='normal' onClick={startHandler}>
+          Start Now
+        </Button>
       </div>
     </Fragment>
   );

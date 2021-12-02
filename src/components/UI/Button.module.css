@@ -1,24 +1,51 @@
 .btn {
   border: none;
-  font-size: 1.4rem;
-  height: 50px;
   width: 100%;
   max-width: 200px;
   margin: 25px 0;
   border-radius: 10px;
-  border: 2px solid #66bfbf;
-  background: transparent;
-  color: #66bfbf;
   outline: none;
   transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
   cursor: pointer;
 }
 
-.btn:hover {
+.normal {
+  height: 50px;
+  font-size: clamp(1rem, 2.5vw, 1.4rem);
+}
+
+.small {
+  height: 40px;
+  font-size: clamp(0.8rem, 2vw, 1rem);
+  margin: 25px 10px;
+}
+
+.filled {
+  border: none;
   background: #66bfbf;
+  color: #fff;
+}
+
+.outlined {
+  background: transparent;
+  border: 2px solid #66bfbf;
+  color: #66bfbf;
+}
+
+.outline:hover {
+  background: #66bfbf;
+  border: none;
   color: #fff;
   transform: scale(1.1);
 }
+
+.filled:hover {
+  background: transparent;
+  transform: scale(1.1);
+  border: 2px solid #66bfbf;
+  color: #66bfbf;
+}
+
 .btn:disabled {
   background: gray;
 }
@@ -28,8 +55,6 @@
 
 @media screen and (max-width: 768px) {
   .btn {
-    height: 40px;
-    width: 80%;
-    margin: 10px 0;
+    max-width: 100px;
   }
 }

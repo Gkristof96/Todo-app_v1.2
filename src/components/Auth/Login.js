@@ -42,7 +42,9 @@ const Login = () => {
       <Link className={style.link} to='/auth/signup'>
         Don't have an account?
       </Link>
-      <Button type='submit'>Sign In</Button>
+      <Button size='normal' type='submit'>
+        Sign In
+      </Button>
     </form>
   );
 };

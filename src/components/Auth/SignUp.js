@@ -57,7 +57,9 @@ const SignUp = () => {
       <Link className={style.link} to='/auth/signin'>
         You have an account?
       </Link>
-      <Button type='submit'>Sign Up</Button>
+      <Button size='normal' type='submit'>
+        Sign Up
+      </Button>
     </form>
   );
 };

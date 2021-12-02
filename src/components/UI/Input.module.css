@@ -1,15 +1,15 @@
 .input-group {
-  width: 80%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   font-weight: 500;
-  font-size: 14px;
+  font-size: clamp(0.8rem, 3vw, 1rem);
   margin-bottom: 10px;
 }
 
 .input-group input {
   margin-top: 5px;
-  font-size: 22px;
+  font-size: clamp(1.2rem, 2.5vw, 1.4rem);
   height: 50px;
   border-radius: 10px;
   background: #eaf6f6;

@@ -3,7 +3,7 @@ import { useContext } from "react/cjs/react.development";
 import "./App.css";
 import HomePage from "./pages/HomePage";
 import Layout from "./components/Layout/Layout";
-import TodoManager from "./components/Todos/TodoManager";
+import TodoPage from "./pages/TodoPage.js";
 import AuthContext from "./store/auth-context";
 import AuthPage from "./pages/AuthPage";
 
@@ -17,7 +17,7 @@ const App = () => {
           <Route path='/*' element={<HomePage />} />
           <Route
             path='/todos'
-            element={authCtx.isLoggedIn ? <TodoManager /> : <Navigate to='/' />}
+            element={authCtx.isLoggedIn ? <TodoPage /> : <Navigate to='/' />}
           ></Route>
           <Route
             path='/auth/*'
