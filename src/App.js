@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { useContext } from "react/cjs/react.development";
+import { useContext } from "react";
 import "./App.css";
 import HomePage from "./pages/HomePage";
 import Layout from "./components/Layout/Layout";
